@@ -14,7 +14,7 @@ import java.awt.*;
  * Gestiona el alta, modificación, búsqueda y eliminación de las mesas. En el formulario se requiere
  * obligatoriamente el "ID Restaurante" para establecer la relación en la base de datos
  * (una mesa pertenece estrictamente a una sucursal). De esta manera, al persistir la información,
- * JPA enlaza correctamente la entidad DiningTable con su respectivo Restaurant
+ * JPA enlaza correctamente la entidad DiningTable con su respectivo Restaurant.
  * @author Jesus Manuel Martinez Cortez
  */
 public class MesaGUI extends JFrame {
