@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 /**
- * Interfaz gráfica encargada de registrar y administrar el inventario de mesas físicas de cada restaurante.
+ * Interfaz gráfica encargada de registrar y administrar el inventario de mesas físicas de cada restaurante
  * <p>
  * Gestiona el alta, modificación, búsqueda y eliminación de las mesas. En el formulario se requiere
  * obligatoriamente el "ID Restaurante" para establecer la relación en la base de datos
