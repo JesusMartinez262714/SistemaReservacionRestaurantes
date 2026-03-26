@@ -21,13 +21,10 @@ public class Main {
      * <ul>
      * <li><b>Configuración Estética:</b> Intenta establecer el "Look and Feel" del sistema
      * operativo anfitrión para que la aplicación luzca como una aplicación nativa (Windows, Mac o Linux).</li>
-     * <li><b>Gestión de Hilos:</b> Utiliza {@code SwingUtilities.invokeLater} para garantizar
-     * que la creación de la GUI ocurra en el Event Dispatch Thread (EDT), evitando errores
-     * de concurrencia y bloqueos en la interfaz.</li>
      * <li><b>Lanzamiento:</b> Instancia y despliega el {@link MenuPrincipal} como raíz de la navegación.</li>
      * </ul>
      *
-     * @param args Argumentos de la línea de comandos (no utilizados en esta versión).
+     * @param args Argumentos de la línea de comandos (no utilizados en esta versión)
      */
     public static void main(String[] args) {
         try {
