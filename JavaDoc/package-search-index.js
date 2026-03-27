@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Controladores"},{"l":"DAOs"},{"l":"DTOs"},{"l":"Entitys"},{"l":"Excepciones"},{"l":"GUI"},{"l":"Interfaces"},{"l":"Mappers"},{"l":"org.example"}];updateSearchResults();
