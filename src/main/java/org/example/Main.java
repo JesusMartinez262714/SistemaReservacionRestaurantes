@@ -27,14 +27,11 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
-            // Ajusta la apariencia de las ventanas para que coincida con el Sistema Operativo del usuario
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
-            // Si falla el LookAndFeel nativo, la aplicación inicia con el tema por defecto de Java (Metal)
             System.err.println("No se pudo cargar el estilo visual nativo: " + e.getMessage());
         }
 
-        // Ejecución segura de la interfaz gráfica en el hilo de despacho de eventos
         SwingUtilities.invokeLater(() -> {
             new MenuPrincipal().setVisible(true);
         });

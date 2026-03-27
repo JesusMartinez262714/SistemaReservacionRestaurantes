@@ -29,10 +29,8 @@ public class Conexion {
     public static EntityManagerFactory getEMF() {
         if (emf == null) {
             try {
-                // Inicialización de la persistencia basada en la configuración XML
                 emf = Persistence.createEntityManagerFactory("PersistenceUnit");
             } catch (Exception e) {
-                // Notificación descriptiva en caso de fallo en la carga del driver o configuración de red
                 System.err.println("Error crítico al inicializar la persistencia JPA: " + e.getMessage());
             }
         }
