@@ -69,7 +69,6 @@ public class ClienteMapper {
         if (dto == null) return null;
 
         Customer entidad;
-        // Instanciación basada en el tipo de cliente seleccionado en la GUI
         if (dto.isEsPremium()) {
             CustomerPremium premium = new CustomerPremium();
             premium.setPoints(dto.getPuntos());
@@ -78,11 +77,9 @@ public class ClienteMapper {
         } else {
             entidad = new Customer();
         }
-
         entidad.setName(dto.getName());
         entidad.setEmail(dto.getEmail());
 
-        // Conversión de String de la GUI a la lista de entidades Telephone requerida por JPA
         if (dto.getTelefono() != null && !dto.getTelefono().trim().isEmpty()) {
             java.util.List<Telephone> listaTel = new java.util.ArrayList<>();
 

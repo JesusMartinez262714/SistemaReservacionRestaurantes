@@ -85,30 +85,40 @@ public class ClienteController {
     }
 
     /**
-     * Actualiza la información de un cliente previamente registrado.
-     * Convierte el ID y los atributos premium desde sus representaciones en texto antes de delegar la actualización.
+     * Actualiza la información de un cliente existente en el sistema, permitiendo cambios
+     * en sus datos básicos y en su estatus de membresía (Normal o Premium).
+     * <p>
+     * Este método es el encargado de orquestar la transición de tipos de cliente. Si el
+     * parámetro {@code esPremium} es verdadero, se realiza la conversión de los valores
+     * de puntos y nivel desde texto a enteros para integrarlos al registro; de lo
+     * contrario, se procesa como un cliente regular.
      *
-     * @param idStr     El identificador único del cliente existente.
-     * @param nombre    El nombre actualizado.
-     * @param email     El correo electrónico actualizado.
-     * @param telefono  El número de teléfono actualizado.
-     * @param esPremium Estado actualizado de la membresía premium.
-     * @param puntosStr Los puntos actualizados en formato de texto.
-     * @param nivelStr  El nivel actualizado en formato de texto.
-     * @return Un objeto {@link ClienteDTO} reflejando los datos ya actualizados en la persistencia.
-     * @throws ValidacionException Si los nuevos datos infringen las reglas de negocio.
-     * @throws NumberFormatException Si el ID, los puntos o el nivel no tienen un formato numérico válido.
+     * @param id         El identificador único del cliente a modificar (en formato String).
+     * @param nombre     El nuevo nombre completo del cliente.
+     * @param email      La nueva dirección de correo electrónico.
+     * @param tel        El nuevo número de teléfono de contacto.
+     * @param esPremium  Indica si el cliente debe ser tratado como Premium tras la actualización.
+     * @param puntos     La cantidad de puntos acumulados (requerido si esPremium es true).
+     * @param nivel      El nivel de lealtad alcanzado (requerido si esPremium es true).
+     * * @throws ValidacionException   Si los datos proporcionados son insuficientes o el
+     * cliente no existe en la base de datos.
+     * @throws NumberFormatException Si el ID, los puntos o el nivel contienen caracteres
+     * no numéricos inválidos.
+     * @author Jesus Manuel Martinez Cortez
      */
-    public ClienteDTO actualizarCliente(String idStr, String nombre, String email, String telefono,
-                                        boolean esPremium, String puntosStr, String nivelStr)
-            throws ValidacionException, NumberFormatException {
+    public void actualizarCliente(String id, String nombre, String email, String tel, boolean esPremium, String puntos, String nivel) {
+        ClienteDTO dto = new ClienteDTO();
+        dto.setcliente_id(Long.parseLong(id));
+        dto.setName(nombre);
+        dto.setEmail(email);
+        dto.setTelefono(tel);
+        dto.setEsPremium(esPremium);
 
-        Long id = Long.parseLong(idStr.trim());
-        int puntos = esPremium ? Integer.parseInt(puntosStr.trim()) : 0;
-        int nivel = esPremium ? Integer.parseInt(nivelStr.trim()) : 0;
+        if (esPremium) {
+            dto.setPuntos(Integer.parseInt(puntos));
+            dto.setNivel(Integer.parseInt(nivel));
+        }
 
-        ClienteDTO dto = new ClienteDTO(id, nombre, email, telefono, esPremium, puntos, nivel);
-
-        return clienteDAO.actualizar(dto);
+        clienteDAO.actualizar(dto);
     }
 }
